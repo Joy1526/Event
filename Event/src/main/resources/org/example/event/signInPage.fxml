@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.event.Controller">
+    <children>
+        <Label alignment="CENTER" layoutX="90.0" layoutY="36.0" prefHeight="38.0" prefWidth="130.0" text="EVENTRIX" textFill="#800020">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#efefef" height="45.0" layoutX="40.0" layoutY="105.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 30; -fx-arc-height: 30;" width="230.0" />
+        <Button fx:id="SignInButton" alignment="CENTER" layoutX="70.0" layoutY="113.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="25.0" prefWidth="58.0" styleClass="SignInButton" text="Sign-in">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font></Button>
+        <Button fx:id="SignUpButton" alignment="CENTER" layoutX="177.0" layoutY="113.0" mnemonicParsing="false" onAction="#SignUp" styleClass="SignInButton" text="Sign-up">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font></Button>
+        <Line fx:id="line" endX="-43.0" layoutX="171.0" layoutY="143.0" startX="-100.0" stroke="#800020" />
+        <ImageView fitHeight="600.0" fitWidth="642.0" layoutX="308.0" pickOnBounds="true">
+            <image>
+                <Image url="@ai.png" />
+            </image>
+            <effect>
+                <InnerShadow />
+            </effect>
+        </ImageView>
+        <AnchorPane fx:id="signupPane" layoutX="1.0" layoutY="150.0" prefHeight="450.0" prefWidth="307.0" style="-fx-background-color: #ffffff;">
+            <children>
+                <TextField layoutX="50.0" layoutY="40.0" prefHeight="38.0" prefWidth="208.0" promptText="Username" styleClass="SignInUserName" />
+                <PasswordField layoutX="50.0" layoutY="148.0" prefHeight="38.0" prefWidth="208.0" promptText="Password" styleClass="SignInUserName" />
+                <Button layoutX="117.0" layoutY="328.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" styleClass="SignInButton" text="Signup">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <TextField layoutX="50.0" layoutY="94.0" prefHeight="38.0" prefWidth="208.0" promptText="Email" styleClass="SignInUserName" />
+                <RadioButton layoutX="50.0" layoutY="208.0" mnemonicParsing="false" text="Vendor">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="person" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="50.0" layoutY="237.0" mnemonicParsing="false" text="Client" toggleGroup="$person" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="signinPane" layoutX="1.0" layoutY="150.0" prefHeight="450.0" prefWidth="307.0" style="-fx-background-color: #ffffff;">
+            <children>
+                <TextField layoutX="50.0" layoutY="40.0" prefHeight="38.0" prefWidth="208.0" promptText="Username" styleClass="SignInUserName" />
+                <PasswordField layoutX="50.0" layoutY="97.0" prefHeight="38.0" prefWidth="208.0" promptText="Password" styleClass="SignInUserName" />
+                <Button layoutX="117.0" layoutY="328.0" mnemonicParsing="false" onAction="#loginFunc" prefHeight="45.0" prefWidth="74.0" styleClass="SignInButton" text="Login">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

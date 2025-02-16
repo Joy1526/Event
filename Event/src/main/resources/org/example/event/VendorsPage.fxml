@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.event.VendorsPageController">
+    <children>
+        <ScrollPane layoutY="111.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="950.0" style="-fx-background-color: #ffffff;">
+            <content>
+                <FlowPane fx:id="myItemsflowPane" prefHeight="490.0" prefWidth="933.0" />
+            </content>
+        </ScrollPane>
+        <AnchorPane fx:id="addItemAnchorPane" layoutY="106.0" prefHeight="490.0" prefWidth="950.0" style="-fx-background-color: #ffffff;" visible="false">
+            <children>
+                <Label layoutX="84.0" layoutY="41.0" prefHeight="33.0" prefWidth="98.0" text="Product Name:  ">
+                    <font>
+                        <Font name="Arial Bold" size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="productName" layoutX="182.0" layoutY="45.0" styleClass="addItemTextField" />
+                <TextField fx:id="productId" layoutX="182.0" layoutY="78.0" styleClass="addItemTextField" />
+                <TextField fx:id="productPrice" layoutX="182.0" layoutY="111.0" styleClass="addItemTextField" />
+                <Label layoutX="84.0" layoutY="74.0" prefHeight="33.0" prefWidth="98.0" text="Product Id:  ">
+                    <font>
+                        <Font name="Arial Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="84.0" layoutY="107.0" prefHeight="33.0" prefWidth="98.0" text="Product Price:  ">
+                    <font>
+                        <Font name="Arial Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Button layoutX="179.0" layoutY="396.0" mnemonicParsing="false" onAction="#importImage" styleClass="addItemButton" text="Import">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <ImageView fx:id="sampleProductImage" fitHeight="210.0" fitWidth="300.0" layoutX="57.0" layoutY="151.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@example.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GAINSBORO" height="58.0" layoutX="301.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="366.0" />
+        <Button layoutX="328.0" layoutY="35.0" mnemonicParsing="false" onAction="#myItems" prefHeight="25.0" prefWidth="69.0" styleClass="vendorButton" text="My Items">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="572.0" layoutY="35.0" mnemonicParsing="false" onAction="#profits" prefHeight="25.0" prefWidth="69.0" styleClass="vendorButton" text="Profit">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="449.0" layoutY="35.0" mnemonicParsing="false" onAction="#orders" prefHeight="25.0" prefWidth="69.0" styleClass="vendorButton" text="Orders">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Line fx:id="vendorLine" endX="-33.0" layoutX="428.0" layoutY="66.0" startX="-99.0" stroke="#800020" strokeWidth="1.5" />
+        <Button fx:id="addItem" layoutX="867.0" layoutY="81.0" mnemonicParsing="false" onAction="#addItemFunc" styleClass="addItemButton" text="Add Item">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Line endX="905.0" layoutX="45.0" layoutY="111.0" startX="-45.0" />
+    </children>
+</AnchorPane>

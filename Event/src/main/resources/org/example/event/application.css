@@ -1,0 +1,98 @@
+
+
+/*Login Signup */
+.SignInButton{
+	-fx-background-color: #efefef;
+	
+	-fx-background-radius: 10;
+}
+
+.SignInButton:hover {
+    -fx-background-color: #d9d9d9;
+}
+
+.SignInUserName{
+	-fx-background-color: #efefef;
+	-fx-prompt-text-fill: gray;
+	-fx-background-radius: 2;
+	 -fx-border-color: transparent;
+}
+
+.SignInUserName:hover{
+	 
+	 -fx-background-color: #d9d9d9;
+}
+
+
+.radio-button {
+    -fx-font-size: 12px;
+    -fx-text-fill: #444;
+}
+.radio-button:hover {
+    -fx-text-fill: #800020;
+}
+
+.radio-button .radio {
+    -fx-border-color: #800020;
+    -fx-border-width: 1px;
+    -fx-background-color: white; 
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-padding: 3px;
+}
+
+.radio-button:selected {
+    -fx-text-fill: #800020; 
+    -fx-font-weight: bold;
+}
+
+
+
+
+
+
+/*Vendor */
+.vendorButton{
+	-fx-background-color: #dcdcdc;
+	
+	-fx-background-radius: 10;
+}
+.vendorButton:hover {
+    -fx-background-color: #A9A9A9;
+}
+.addItemButton{
+	-fx-background-color: #dcdcdc;
+	
+	-fx-background-radius: 10;
+}
+.addItemButton:hover {
+    -fx-background-color: #A9A9A9;
+}
+.addItemTextField{
+	-fx-background-color: #d9d9d9;
+	-fx-prompt-text-fill: gray;
+	-fx-background-radius: 2;
+	 -fx-border-color: transparent;
+}
+
+
+
+/*Vendor Item */
+.ItemNameButton{
+	 -fx-font-weight: bold;
+	 -fx-background-color: #ffffff;
+}
+.ItemNameButton:hover{
+	-fx-text-fill:gray;
+}
+.ItemLabel{
+    -fx-background-color: #dcdcdc;
+}
+.ItemEditButton{
+    -fx-background-color: #dcdcdc;
+}
+.ItemEditButton:hover{
+    -fx-background-color: #A9A9A9;
+}
+
+
