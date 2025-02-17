@@ -31,8 +31,8 @@ public class VendorsPageController implements Initializable {
 
 
     //for Vendors Page
-    private int a1=0,a2=1,a3=2;//rows
-    private int grid=0;
+   //private int a1=0,a2=1,a3=2;//rows
+    //private int grid=0;
     private int c=0;
     @FXML
     Line vendorLine;
@@ -156,14 +156,16 @@ public class VendorsPageController implements Initializable {
             addItemAnchorPane.setVisible(true);
         }
         else {
-            System.out.println(grid+" "+a1);
+            /*System.out.println(grid+" "+a1);
             if(grid==3) {
                 grid=0;
                 //addRow();
                 a1+=1;
                 //a2+=3;
                 //a3+=3;
+
             }
+             */
             ImageView temp=new ImageView(sampleProductImage.getImage());//temp chilo
             temp.setFitWidth(307);
             temp.setFitHeight(180);
@@ -189,7 +191,7 @@ public class VendorsPageController implements Initializable {
             //myItemsGridPane.add(pPrice,grid,a3);
             sampleProductImage.setImage(new Image(getClass().getResourceAsStream("example.png")));
 
-            grid++;
+            //grid++;
 
             addItemAnchorPane.setVisible(false);
             myItemsflowPane.setVisible(true);
