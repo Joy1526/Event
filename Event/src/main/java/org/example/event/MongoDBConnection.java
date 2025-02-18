@@ -22,6 +22,7 @@ public class MongoDBConnection {
     }
 
     public static MongoDatabase getDatabase() {
-        return mongoClient.getDatabase("EVENTRIX"); // Replace with your database name
+        System.out.println(1);
+        return mongoClient.getDatabase("Try"); // Replace with your database name
     }
 }

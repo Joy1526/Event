@@ -11,6 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
+            System.out.println(1);
             Parent root= FXMLLoader.load(getClass().getResource("signInPage.fxml"));
             //Parent root= FXMLLoader.load(getClass().getResource("VendorsPage.fxml"));//To load the FXML file
 
