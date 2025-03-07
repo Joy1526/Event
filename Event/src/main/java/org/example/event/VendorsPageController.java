@@ -3,8 +3,11 @@ package org.example.event;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +23,17 @@ import javafx.scene.shape.Line;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.bson.Document;
 
 public class VendorsPageController implements Initializable {
+
+    MongoDatabase database;
+    MongoCollection<Document> usersCollection;
+
+    static String userName;
+    static String userID;
+    static String vendorID;
+
     FileChooser fileChooser=new FileChooser();
 
     //for Vendors Items
@@ -78,6 +90,7 @@ public class VendorsPageController implements Initializable {
     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        System.out.println(userID);
         // TODO Auto-generated method stub
         fileChooser.setInitialDirectory(new File("C:\\Users\\User\\Downloads"));
         myItemsflowPane.setHgap(5);  // 10-pixel horizontal gap between items
@@ -109,9 +122,49 @@ public class VendorsPageController implements Initializable {
 			/*myItemsGridPane.setHgap(10);
 			myItemsGridPane.setVgap(10);
 			*/
+            database=MongoDBConnection.getDatabase();
+            usersCollection=database.getCollection("vendors");
+
+            ///
+        try {
+            System.out.println(5);
+            LoadAllItems();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
+    public void LoadAllItems() throws IOException {
+        Document vendor = usersCollection.find(new Document("userId",userID)).first();
+        if(vendor.containsKey("items")){
+            List<Document> items = (List<Document>) vendor.get("items");
+            for (Document item : items){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("VendorItems.fxml"));
+                AnchorPane itemPane = loader.load();
+
+                Label productNameLabel = (Label) itemPane.lookup("#VendorItemName");
+                Label productPriceLabel = (Label) itemPane.lookup("#VendorItemPrice");
+                ImageView productImageView = (ImageView) itemPane.lookup("#VendorItemImage");
+                Button productButton = (Button) itemPane.lookup("#VendorItemButton");
+
+                productNameLabel.setText(item.getString("Product Name"));
+                productPriceLabel.setText(item.getString("Price"));
+                //System.out.println(item.getString("Image"));
+                String imageUrl = item.getString("imageURL");
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    Image image = new Image(imageUrl);
+                    productImageView.setImage(image);
+                }
+                myItemsflowPane.getChildren().add(itemPane);
+               // productImageView.setImage(new Image("file:///"+item.getString("Image")));
+            }
+
+        }
+
+
+    }
 
 
 
@@ -186,6 +239,20 @@ public class VendorsPageController implements Initializable {
             productPriceLabel.setText(pPrice.getText());
 
             myItemsflowPane.getChildren().add(itemPane);
+
+            String url=productImageView.getImage().getUrl();
+            System.out.println("2");
+
+            Document item=new Document("Product Name",pName.getText());
+            item.append("Price",pPrice.getText());
+            item.append("imageURL",url);
+            System.out.println(url);
+            System.out.println("2");
+
+            Document updateQuery = new Document("$push", new Document("items", item));
+            Document vendor = usersCollection.findOneAndUpdate(new Document("userId", userID), updateQuery);
+            System.out.println("2");
+
 
             //myItemsGridPane.add(pName,grid,a2);
             //myItemsGridPane.add(pPrice,grid,a3);
