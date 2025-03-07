@@ -16,12 +16,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 
 public class Controller implements Initializable{
     //DataBase
     MongoDatabase database;
     MongoCollection<Document> usersCollection;
+    MongoCollection<Document> vendorsCollection;
 
     //For Login SignUp
     @FXML
@@ -54,7 +56,7 @@ public class Controller implements Initializable{
 
     //Login
     @FXML
-    private TextField loginUserName;
+    private TextField loginEmail;
     @FXML
     private PasswordField loginPassword;
 
@@ -69,6 +71,7 @@ public class Controller implements Initializable{
         //myItemScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         database=MongoDBConnection.getDatabase();
         usersCollection=database.getCollection("users");
+        vendorsCollection=database.getCollection("vendors");
     }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -140,7 +143,7 @@ public class Controller implements Initializable{
             AlertHelper.showStyledAlert("Error","Please fill all fields!", Alert.AlertType.ERROR);
             return;
         }
-        Document existingUser=usersCollection.find(Filters.eq("username",username)).first();
+        Document existingUser=usersCollection.find(Filters.eq("email",email)).first();
         if(existingUser != null) {
             //showAlert("Error", "Username already taken.");
             AlertHelper.showStyledAlert("Error","Username already taken.", Alert.AlertType.ERROR);
@@ -151,7 +154,32 @@ public class Controller implements Initializable{
         newUser.append("email",email);
         newUser.append("role",selectedRole());
         usersCollection.insertOne(newUser);
-        showAlert("Success","User successfully registered!");
+
+        if(selectedRole().equals("vendor")){
+            ObjectId userId = newUser.getObjectId("_id");
+            String _id=userId.toHexString();
+            Document newVendor=new Document("userId",_id);
+            newVendor.append("username",username);
+            newVendor.append("password",password);
+            newVendor.append("email",email);
+            vendorsCollection.insertOne(newVendor);
+        }
+
+
+
+
+       /* switch(selectedRole()){
+            case "vendor":
+                Document newVendor=new Document("username",username);
+                newUser.append("password",password);
+                newUser.append("email",email);
+                newUser.append("role",selectedRole());
+                break;
+
+        }*/
+
+
+        //showAlert("Success","User successfully registered!");
         AlertHelper.showStyledAlert("Success","User successfully registered!", Alert.AlertType.INFORMATION);
         signinPane.setVisible(false);
         signupPane.setVisible(true);
@@ -161,17 +189,17 @@ public class Controller implements Initializable{
     }
     @FXML
     void LoginButton(ActionEvent event) {
-        String username=loginUserName.getText();
+        String email=loginEmail.getText();
         String password=loginPassword.getText();
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             //showAlert("Error", "All fields are required.");
             AlertHelper.showStyledAlert("Error", "All fields are required.", Alert.AlertType.ERROR);
 
             return;
         }
         //check
-        Document user=usersCollection.find(Filters.eq("username",username)).first();
+        Document user=usersCollection.find(Filters.eq("email",email)).first();
         if(user!=null && Objects.equals(user.getString("password"),password)){
             //showAlert("success","Login Successful!");
             AlertHelper.showStyledAlert("success","Login Successful!", Alert.AlertType.INFORMATION);
@@ -179,12 +207,22 @@ public class Controller implements Initializable{
 
         }
         else{
-            showAlert("Error","Login Failed!");
+            //showAlert("Error","Login Failed!");
             AlertHelper.showStyledAlert("Error","Login Failed!", Alert.AlertType.ERROR);
 
             return;
         }
-        changeFXML.switchScene(event,"VendorsPage.fxml");
+
+        if(Objects.equals(user.getString("role"),"vendor")){
+
+            ObjectId userId = user.getObjectId("_id");
+            String _id=userId.toHexString();
+            //VendorsPageController.userName =;
+            VendorsPageController.userID =_id;
+            VendorsPageController.vendorID=_id;
+            changeFXML.switchScene(event,"VendorsPage.fxml");
+
+        }
 
 
 
