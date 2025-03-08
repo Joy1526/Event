@@ -12,13 +12,12 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {
             System.out.println(1);
-            Parent root= FXMLLoader.load(getClass().getResource("ClientsPage.fxml"));
+            Parent root= FXMLLoader.load(getClass().getResource("signInPage.fxml"));
             //Parent root= FXMLLoader.load(getClass().getResource("VendorsPage.fxml"));//To load the FXML file
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setScene(scene);
-            stage.setResizable(false);
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
