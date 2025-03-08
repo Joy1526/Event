@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="800.0" style="-fx-border-color: #800020;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="eventNameField" layoutX="206.0" layoutY="30.0" prefWidth="400" promptText="Event Name" />
+      <DatePicker fx:id="eventDatePicker" layoutX="206.0" layoutY="85.0" prefWidth="400" promptText="Select Date" />
+      <TextField fx:id="eventLocationField" layoutX="206.0" layoutY="162.0" prefWidth="400" promptText="Event Location" />
+      <TextArea fx:id="eventDescriptionField" layoutX="206.0" layoutY="228.0" prefHeight="80" prefWidth="400" promptText="Event Description" wrapText="true" />
+      <Button fx:id="createEventButton" layoutX="347.0" layoutY="325.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-size: 14px; -fx-background-radius: 5;" text="Create Event" />
+   </children>
+</AnchorPane>

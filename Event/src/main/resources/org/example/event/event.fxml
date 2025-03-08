@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="8.0" layoutY="7.0" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: GAINSBORO;" text=" Event Name ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="eventName" layoutX="161.0" layoutY="9.0" prefHeight="31.0" prefWidth="373.0" style="-fx-border-color: GAINSBORO;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="8.0" layoutY="54.0" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: GAINSBORO;" text=" Event Location ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="eventLocation" layoutX="161.0" layoutY="56.0" prefHeight="31.0" prefWidth="373.0" style="-fx-border-color: GAINSBORO;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="8.0" layoutY="106.0" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: GAINSBORO;" text=" Event Date">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="eventDate" layoutX="161.0" layoutY="108.0" prefHeight="31.0" prefWidth="373.0" style="-fx-border-color: GAINSBORO;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
