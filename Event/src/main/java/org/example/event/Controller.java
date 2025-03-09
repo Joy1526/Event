@@ -24,6 +24,7 @@ public class Controller implements Initializable{
     MongoDatabase database;
     MongoCollection<Document> usersCollection;
     MongoCollection<Document> vendorsCollection;
+    MongoCollection<Document> clientsCollection;
 
     //For Login SignUp
     @FXML
@@ -72,6 +73,7 @@ public class Controller implements Initializable{
         database=MongoDBConnection.getDatabase();
         usersCollection=database.getCollection("users");
         vendorsCollection=database.getCollection("vendors");
+        clientsCollection=database.getCollection("clients");
     }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -164,6 +166,15 @@ public class Controller implements Initializable{
             newVendor.append("email",email);
             vendorsCollection.insertOne(newVendor);
         }
+        if(selectedRole().equals("client")){
+            ObjectId userId = newUser.getObjectId("_id");
+            String _id=userId.toHexString();
+            Document newClient=new Document("userId",_id);
+            newClient.append("username",username);
+            newClient.append("password",password);
+            newClient.append("email",email);
+            clientsCollection.insertOne(newClient);
+        }
 
 
 
@@ -221,6 +232,16 @@ public class Controller implements Initializable{
             VendorsPageController.userID =_id;
             VendorsPageController.vendorID=_id;
             changeFXML.switchScene(event,"VendorsPage.fxml");
+
+        }
+        if(Objects.equals(user.getString("role"),"client")){
+
+            ObjectId userId = user.getObjectId("_id");
+            String _id=userId.toHexString();
+            //VendorsPageController.userName =;
+            ClientController.userID =_id;
+            ClientController.clientID=_id;
+            changeFXML.switchScene(event,"ClientsPage.fxml");
 
         }
 
