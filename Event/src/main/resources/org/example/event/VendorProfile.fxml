@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="vendorItem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="307.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="VendorItemImage" fitHeight="180.0" fitWidth="307.0" pickOnBounds="true" styleClass="ItemNameButton">
+         <image>
+            <Image url="@example.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="VendorItemPrice" alignment="CENTER" layoutY="210.0" prefHeight="31.0" prefWidth="307.0" styleClass="ItemLabel" text="Product price" />
+      <Button fx:id="VendorItemBuy" layoutY="272.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="307.0" styleClass="ItemEditButton" text="Buy" />
+      <Label fx:id="VendorItemName" alignment="CENTER" layoutY="180.0" prefHeight="31.0" prefWidth="307.0" styleClass="ItemLabel" text="Product name" />
+      <Label fx:id="VendorItemCompanyName" alignment="CENTER" layoutY="241.0" prefHeight="31.0" prefWidth="307.0" styleClass="ItemLabel" text="Company name" />
+      <Label fx:id="userid" layoutX="84.0" layoutY="143.0" prefHeight="17.0" prefWidth="121.0" text="Label" visible="false" />
+   </children>
+</AnchorPane>
